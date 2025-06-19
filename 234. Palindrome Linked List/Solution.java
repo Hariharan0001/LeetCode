@@ -9,17 +9,34 @@
  * }
  */
 class Solution {
+    // public boolean check(ListNode pre, ListNode cur, int length){
+    //     while(pre!=null && cur!=null){
+    //         if(length%2==0){
+    //             if(pre.val!=cur.val) return false;
+    //             pre = pre.next;
+    //             cur = cur.next;
+    //         }
+    //         else{
+    //             if(pre.val!=cur.next.val) return false;
+    //             pre = pre.next;
+    //             cur = cur.next;
+    //         }
+    //     }
+    //     return true;
+    // }
     public boolean check(ListNode pre, ListNode cur, int length){
-        while(pre!=null && cur!=null){
-            if(length%2==0){
-                if(pre.val!=cur.val) return false;
-                pre = pre.next;
+        if(length%2==0){
+            for(int i=0;i<length/2;i++){
+                if(cur.val!=pre.val) return false;
                 cur = cur.next;
+                pre = pre.next;
             }
-            else{
+        }
+        else{
+            for(int i=0;i<length/2;i++){
                 if(pre.val!=cur.next.val) return false;
-                pre = pre.next;
                 cur = cur.next;
+                pre = pre.next;
             }
         }
         return true;
